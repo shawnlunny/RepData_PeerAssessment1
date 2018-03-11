@@ -122,24 +122,22 @@ $(document).ready(function () {
 </div>
 
 
-<div id="loading-and-preprocessing-the-data" class="section level2">
-<h2>Loading and preprocessing the data</h2>
-</div>
+<div id="loading-and-preprocessing-the-data" class="section level1">
+<h1>Loading and preprocessing the data</h1>
 <div id="load-the-data-i.e.read.csv" class="section level2">
 <h2>1. Load the data (i.e. read.csv())</h2>
 <pre class="r"><code>unzip (&quot;activity.zip&quot;)
 activityData &lt;- read.csv(file=&quot;activity.csv&quot;, header=TRUE, sep=&quot;,&quot;)</code></pre>
-<div id="sanity-check-that-the-row-count-is-17568" class="section level3">
-<h3>Sanity check that the row count is 17568</h3>
+</div>
+<div id="sanity-check-that-the-row-count-is-17568" class="section level2">
+<h2>Sanity check that the row count is 17568</h2>
 <pre class="r"><code>nrow(activityData)</code></pre>
 <pre><code>## [1] 17568</code></pre>
 </div>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level1">
 <h1>What is mean total number of steps taken per day?</h1>
-<div id="for-this-part-of-the-assignment-you-can-ignore-the-missing-values-in-the-dataset." class="section level5">
-<h5>For this part of the assignment, you can <strong>ignore the missing values</strong> in the dataset.</h5>
-</div>
+<p>For this part of the assignment, you can <strong>ignore the missing values</strong> in the dataset.</p>
 <div id="calculate-the-total-number-of-steps-taken-per-day" class="section level2">
 <h2>1.Calculate the total number of steps taken per day</h2>
 <pre class="r"><code>totalSteps &lt;- aggregate(steps ~ date, data=activityData, FUN=&quot;sum&quot;)</code></pre>
@@ -151,13 +149,11 @@ activityData &lt;- read.csv(file=&quot;activity.csv&quot;, header=TRUE, sep=&quo
 </div>
 <div id="calculate-and-report-the-mean-and-median-of-the-total-number-of-steps-taken-per-day" class="section level2">
 <h2>3.Calculate and report the mean and median of the total number of steps taken per day</h2>
-<div id="there-is-no-such-thing-as-partial-steps-so-round-the-mean-and-median" class="section level4">
-<h4><em><strong>There is no such thing as partial steps so round the mean and median</strong></em></h4>
+<p><em><strong>There is no such thing as partial steps so round the mean and median</strong></em></p>
 <pre class="r"><code>round(mean(totalSteps$steps), 0)</code></pre>
 <pre><code>## [1] 10766</code></pre>
 <pre class="r"><code>round(median(totalSteps$steps), 0)</code></pre>
 <pre><code>## [1] 10765</code></pre>
-</div>
 </div>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level1">
@@ -184,9 +180,7 @@ plot(steps ~ interval, data=totalIntervals, type=&quot;l&quot;, xlab=&quot;Inter
 </div>
 <div id="devise-a-strategy-for-filling-in-all-of-the-missing-values-in-the-dataset.-the-strategy-does-not-need-to-be-sophisticated.-for-example-you-could-use-the-meanmedian-for-that-day-or-the-mean-for-that-5-minute-interval-etc." class="section level2">
 <h2>2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</h2>
-<div id="the-mean-for-5-minute-interval-was-chosen" class="section level4">
-<h4><strong>The mean for 5-minute interval was chosen</strong></h4>
-</div>
+<p><strong>The mean for 5-minute interval was chosen</strong></p>
 </div>
 <div id="create-a-new-dataset-that-is-equal-to-the-original-dataset-but-with-the-missing-data-filled-in." class="section level2">
 <h2>3.Create a new dataset that is equal to the original dataset but with the missing data filled in.</h2>
@@ -203,9 +197,7 @@ hist(filledTotalSteps$steps, xlab=&quot;Number of Steps&quot;, ylim=c(0,40), mai
 <pre><code>## [1] 10766</code></pre>
 <pre class="r"><code>round(median(filledTotalSteps$steps), 0)</code></pre>
 <pre><code>## [1] 10766</code></pre>
-<div id="the-mean-stayed-the-same-and-the-median-increased-one-step.-this-makes-sense-as-we-used-the-mean-of-each-5-minute-interval-to-fill-in-the-missing-data.-thus-the-mean-would-not-change.-it-also-makes-sense-that-with-the-extra-values-filled-in-that-the-median-might-shift-slightly-1-step-in-this-case." class="section level4">
-<h4><strong>The mean stayed the same and the median increased one step. This makes sense as we used the mean of each 5-minute interval to fill in the missing data. Thus the mean would not change. It also makes sense that with the extra values filled in that the median might shift slightly (1 step in this case).</strong></h4>
-</div>
+<p><strong>The mean stayed the same and the median increased one step. This makes sense as we used the mean of each 5-minute interval to fill in the missing data. Thus the mean would not change. It also makes sense that with the extra values filled in that the median might shift slightly (1 step in this case).</strong></p>
 </div>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level1">

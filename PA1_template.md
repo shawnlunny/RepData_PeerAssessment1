@@ -6,14 +6,14 @@ output:
 ---
 
 
-## Loading and preprocessing the data
+# Loading and preprocessing the data
 ##1. Load the data (i.e. read.csv())
 
 ```r
 unzip ("activity.zip")
 activityData <- read.csv(file="activity.csv", header=TRUE, sep=",")
 ```
-###Sanity check that the row count is 17568
+##Sanity check that the row count is 17568
 
 ```r
 nrow(activityData)
@@ -24,7 +24,9 @@ nrow(activityData)
 ```
 
 # What is mean total number of steps taken per day?
-#####For this part of the assignment, you can **ignore the missing values** in the dataset.
+
+For this part of the assignment, you can **ignore the missing values** in the dataset.
+
 ##1.Calculate the total number of steps taken per day
 
 ```r
@@ -39,7 +41,9 @@ hist(totalSteps$steps, xlab="Steps Taken", ylim=c(0,30), main="Histogram of Step
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ##3.Calculate and report the mean and median of the total number of steps taken per day
-####_**There is no such thing as partial steps so round the mean and median**_
+
+_**There is no such thing as partial steps so round the mean and median**_
+
 
 ```r
 round(mean(totalSteps$steps), 0)
@@ -87,7 +91,9 @@ sum(is.na(activityData$steps))
 ## [1] 2304
 ```
 ##2.Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
-####**The mean for 5-minute interval was chosen**
+
+**The mean for 5-minute interval was chosen**
+
 ##3.Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
@@ -120,7 +126,7 @@ round(median(filledTotalSteps$steps), 0)
 ```
 ## [1] 10766
 ```
-####**The mean stayed the same and the median increased one step. This makes sense as we used the mean of each 5-minute interval to fill in the missing data. Thus the mean would not change. It also makes sense that with the extra values filled in that the median might shift slightly (1 step in this case).**
+**The mean stayed the same and the median increased one step. This makes sense as we used the mean of each 5-minute interval to fill in the missing data. Thus the mean would not change. It also makes sense that with the extra values filled in that the median might shift slightly (1 step in this case).**
 
 # Are there differences in activity patterns between weekdays and weekends?
 ##1.Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
